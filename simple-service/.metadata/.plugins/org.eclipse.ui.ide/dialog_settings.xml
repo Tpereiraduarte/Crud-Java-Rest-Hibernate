@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="org.eclipse.buildship:3.1.0.v20190501-0832"/>
+		<item value="org.eclipse.eclemma.feature:3.1.2.201903112331"/>
+		<item value="org.eclipse.egit.mylyn:5.4.0.201906121030-r"/>
+		<item value="org.eclipse.egit:5.4.0.201906121030-r"/>
+		<item value="org.eclipse.emf.common:2.16.0.v20190528-0845"/>
+		<item value="org.eclipse.emf.ecore:2.18.0.v20190528-0845"/>
+		<item value="org.eclipse.epp.mpc:1.7.7.v20190521-1752"/>
+		<item value="org.eclipse.help:2.2.600.v20190605-1800"/>
+		<item value="org.eclipse.jdt:3.18.0.v20190605-1800"/>
+		<item value="org.eclipse.jgit.ssh.apache:5.4.0.201906121030-r"/>
+		<item value="org.eclipse.jgit:5.4.0.201906121030-r"/>
+		<item value="org.eclipse.m2e.feature:1.12.0.20190529-1916"/>
+		<item value="org.eclipse.m2e.logback.feature:1.12.0.20190529-1916"/>
+		<item value="org.eclipse.mylyn.bugzilla_feature:3.24.2.v20180905-0003"/>
+		<item value="org.eclipse.mylyn.commons.identity:1.16.0.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.commons.notifications:1.16.0.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.commons.repositories.http:1.16.0.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.commons.repositories:1.16.0.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.commons:3.24.2.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.context_feature:3.24.2.v20180905-0014"/>
+		<item value="org.eclipse.mylyn.discovery:3.24.2.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.ide_feature:3.24.2.v20180905-0014"/>
+		<item value="org.eclipse.mylyn.java_feature:3.24.2.v20180905-0014"/>
+		<item value="org.eclipse.mylyn.monitor:3.24.2.v20180904-2231"/>
+		<item value="org.eclipse.mylyn.tasks.ide:3.24.2.v20180905-0003"/>
+		<item value="org.eclipse.mylyn.team_feature:3.24.2.v20180905-0014"/>
+		<item value="org.eclipse.mylyn.wikitext.editors_feature:3.0.29.201812180023"/>
+		<item value="org.eclipse.mylyn.wikitext_feature:3.0.29.201812180023"/>
+		<item value="org.eclipse.mylyn_feature:3.24.2.v20180905-0003"/>
+		<item value="org.eclipse.platform:4.12.0.v20190605-1801"/>
+		<item value="org.eclipse.rcp:4.12.0.v20190605-1801"/>
+		<item value="org.eclipse.userstorage:1.2.0.v20190308-0433"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.14.0.v201905291408"/>
+	</list>
+</section>
