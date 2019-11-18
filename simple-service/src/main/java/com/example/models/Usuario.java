@@ -1,7 +1,10 @@
 package com.example.models;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -9,8 +12,8 @@ import javax.persistence.Table;
 @Table(name = "usuarios")
 public class Usuario {
 	@Id
-    @Column(name = "id", updatable = false, nullable = false)
-	private long id;
+    @Column(name = "id_usuario", updatable = false, nullable = false)
+	private long id_usuario;
 
 	@Column(name = "nome")
 	private String nome;
@@ -24,12 +27,23 @@ public class Usuario {
 	@Column(name = "senha")
 	private String senha;
 
-	public long getId() {
-		return id;
+	@OneToMany(mappedBy = "evento")
+	public Set<Evento> eventoUsuarios;
+	
+	public Usuario(long id_usuario, String nome, String sobrenome, String email, String senha) {
+		this.id_usuario = id_usuario;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
+		this.senha = senha;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public long getId() {
+		return id_usuario;
+	}
+
+	public void setId(long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public String getNome() {
@@ -59,5 +73,4 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 }

@@ -7,6 +7,5 @@ public interface IRepository<T> {
 	T getById(long id);
 	void create(T entity);
 	void update(long id, T entity);
-	void delete(long id);
 	void remove(T entity);
 }

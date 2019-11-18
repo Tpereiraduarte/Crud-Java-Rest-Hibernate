@@ -7,32 +7,32 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.example.models.Usuario;
+import com.example.models.Palestra;
 
-public class UsuarioRepository implements IRepository<Usuario> {
+public class PalestraRepository implements IRepository<Palestra> {
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
 
-	public UsuarioRepository() {
+	public PalestraRepository() {
 		emf = Persistence.createEntityManagerFactory("my-persistence");
 		em = emf.createEntityManager();
 	}
 
 	public void delete(long id) {
 		try {
-			Usuario usuario = getById(id);
-			remove(usuario);
+			Palestra palestra = getById(id);
+			remove(palestra);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
 	@Override
-	public List<Usuario> readAll() {
-		List<Usuario> results = new ArrayList<Usuario>();
+	public List<Palestra> readAll() {
+		List<Palestra> results = new ArrayList<Palestra>();
 		try {
-			TypedQuery<Usuario> query = em.createQuery("SELECT c FROM Usuario c", Usuario.class);
+			TypedQuery<Palestra> query = em.createQuery("SELECT c FROM Palestra c", Palestra.class);
 			results = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,15 +42,15 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public Usuario getById(long id) {
-		return em.find(Usuario.class, id);
+	public Palestra getById(long id) {
+		return em.find(Palestra.class, id);
 	}
 
 	@Override
-	public void create(Usuario usuario) {
+	public void create(Palestra palestra) {
 		try {
 			em.getTransaction().begin();
-			em.persist(usuario);
+			em.persist(palestra);
 			em.getTransaction().commit();
 			em.close();
 		} catch (Exception e) {
@@ -61,15 +61,14 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public void update(long id,Usuario usuario) {
+	public void update(long id,Palestra palestra) {
 		try {
-			Usuario novousuario = getById(id);
+			Palestra novapalestra = getById(id);
 			em.getTransaction().begin();
-			novousuario.setNome(usuario.getNome());
-			novousuario.setSobrenome(usuario.getSobrenome());
-			novousuario.setEmail(usuario.getEmail());
-			novousuario.setSenha(usuario.getSenha());
-			em.merge(novousuario);
+			novapalestra.setTema(palestra.getTema());
+			novapalestra.setData(palestra.getData());;
+			novapalestra.setPalestrante(palestra.getPalestrante());
+			em.merge(novapalestra);
 			em.getTransaction().commit();
 			em.close();
 		} catch (Exception e) {
@@ -79,11 +78,11 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public void remove(Usuario usuario) {
+	public void remove(Palestra palestra) {
 		try {
 			em.getTransaction().begin();
-			usuario = em.find(Usuario.class, usuario.getId());
-			em.remove(usuario);
+			palestra = em.find(Palestra.class, palestra.getId());
+			em.remove(palestra);
 			em.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();

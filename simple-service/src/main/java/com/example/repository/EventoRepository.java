@@ -2,37 +2,38 @@ package com.example.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.example.models.Usuario;
+import com.example.models.Evento;
 
-public class UsuarioRepository implements IRepository<Usuario> {
+public class EventoRepository implements IRepository<Evento>{
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
 
-	public UsuarioRepository() {
+	public EventoRepository() {
 		emf = Persistence.createEntityManagerFactory("my-persistence");
 		em = emf.createEntityManager();
 	}
 
 	public void delete(long id) {
 		try {
-			Usuario usuario = getById(id);
-			remove(usuario);
+			Evento evento = getById(id);
+			remove(evento);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
 	@Override
-	public List<Usuario> readAll() {
-		List<Usuario> results = new ArrayList<Usuario>();
+	public List<Evento> readAll() {
+		List<Evento> results = new ArrayList<Evento>();
 		try {
-			TypedQuery<Usuario> query = em.createQuery("SELECT c FROM Usuario c", Usuario.class);
+			TypedQuery<Evento> query = em.createQuery("SELECT c FROM Evento c", Evento.class);
 			results = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,15 +43,15 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public Usuario getById(long id) {
-		return em.find(Usuario.class, id);
+	public Evento getById(long id) {
+		return em.find(Evento.class, id);
 	}
 
 	@Override
-	public void create(Usuario usuario) {
+	public void create(Evento evento) {
 		try {
 			em.getTransaction().begin();
-			em.persist(usuario);
+			em.persist(evento);
 			em.getTransaction().commit();
 			em.close();
 		} catch (Exception e) {
@@ -61,15 +62,14 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public void update(long id,Usuario usuario) {
+	public void update(long id,Evento evento) {
 		try {
-			Usuario novousuario = getById(id);
+			Evento novoevento = getById(id);
 			em.getTransaction().begin();
-			novousuario.setNome(usuario.getNome());
-			novousuario.setSobrenome(usuario.getSobrenome());
-			novousuario.setEmail(usuario.getEmail());
-			novousuario.setSenha(usuario.getSenha());
-			em.merge(novousuario);
+			novoevento.setNome(evento.getNome());
+			novoevento.setData_inicial(evento.getData_inicial());
+			novoevento.setData_final(evento.getData_final());
+			em.merge(novoevento);
 			em.getTransaction().commit();
 			em.close();
 		} catch (Exception e) {
@@ -79,11 +79,11 @@ public class UsuarioRepository implements IRepository<Usuario> {
 	}
 
 	@Override
-	public void remove(Usuario usuario) {
+	public void remove(Evento evento) {
 		try {
 			em.getTransaction().begin();
-			usuario = em.find(Usuario.class, usuario.getId());
-			em.remove(usuario);
+			evento = em.find(Evento.class, evento.getId());
+			em.remove(evento);
 			em.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
