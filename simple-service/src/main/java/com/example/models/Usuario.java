@@ -1,12 +1,8 @@
 package com.example.models;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "usuarios")
@@ -26,18 +22,7 @@ public class Usuario {
 
 	@Column(name = "senha")
 	private String senha;
-
-	@OneToMany(mappedBy = "evento")
-	public Set<Evento> eventoUsuarios;
 	
-	public Usuario(long id_usuario, String nome, String sobrenome, String email, String senha) {
-		this.id_usuario = id_usuario;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.email = email;
-		this.senha = senha;
-	}
-
 	public long getId() {
 		return id_usuario;
 	}
@@ -73,4 +58,5 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 }

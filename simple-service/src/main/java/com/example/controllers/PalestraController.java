@@ -26,6 +26,7 @@ public class PalestraController {
 	@Produces(MediaType.APPLICATION_JSON)	
 	@Path("/")
 	public List<Palestra> listPalestras() throws SQLException {
+		System.out.println("teste");
 		return palestraService.readAll();
 	}
 
@@ -41,6 +42,7 @@ public class PalestraController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
 	public Response create(Palestra palestra) throws SQLException  {
+		System.out.println(palestra);
 		palestraService.create(palestra);
 		return Response.status(Response.Status.OK).build();
 	}
