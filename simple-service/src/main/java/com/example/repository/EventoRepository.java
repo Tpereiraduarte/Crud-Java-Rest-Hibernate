@@ -66,6 +66,9 @@ public class EventoRepository implements IRepository<Evento>{
 		try {
 			Evento novoevento = getById(id);
 			em.getTransaction().begin();
+			novoevento.setNome(evento.getNome());
+			novoevento.setData_inicial(evento.getData_inicial());
+			novoevento.setData_final(evento.getData_final());
 			em.merge(novoevento);
 			em.getTransaction().commit();
 			em.close();

@@ -29,12 +29,12 @@ public class UsuarioController {
 		return usuarioService.readAll();
 	}
 
-	/*@GET
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
-	@Path("{id}/")
-	public List<Pessoa> getPessoa(@PathParam("id") long id) throws SQLException {
-		return pessoaService.getPessoa(id);
-	}*/
+	@Path("/{id}")
+	public Usuario getUsuario(@PathParam("id") long id) throws SQLException {
+		return usuarioService.getById(id);
+	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

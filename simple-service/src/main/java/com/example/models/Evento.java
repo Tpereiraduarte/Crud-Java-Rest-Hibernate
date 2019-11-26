@@ -1,16 +1,13 @@
 package com.example.models;
 
 import java.util.Date;
-import java.util.List;
-
+import java.util.Set;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import com.example.models.Palestra;
-import com.example.models.Usuario;;
 
 @Entity
 @Table(name = "eventos")
@@ -18,24 +15,30 @@ public class Evento {
 	@Id
 	@Column(name = "id_evento", updatable = false, nullable = false)
 	private long id;
-
-
-	@OneToMany
-	@JoinColumn(name="usuario_id")
-	public List<Usuario> eventoUsuarios;
-	
-	@OneToMany
-	@JoinColumn(name="palestra_id")
-	private List<Palestra> eventoPalestras;
+		
+	@Column(name = "nome")
+	private String nome;
 	
 	@Column(name = "data_inicial")
 	private Date data_inicial;
 	
-	@Column(name = "nome")
-	private String nome;
-	
 	@Column(name = "data_final")
 	private Date data_final;
+
+	public Evento() {
+		
+	}
+	
+	@OneToMany(mappedBy = "eventoPalestras")
+	public Set<Evento> eventoPalestras;
+	
+	
+	public Evento(long id, String nome, Date data_inicial, Date data_final) {
+		this.id = id;
+		this.nome = nome;
+		this.data_inicial = data_inicial;
+		this.data_final = data_final;
+	}
 
 	public long getId() {
 		return id;
@@ -67,5 +70,14 @@ public class Evento {
 
 	public void setData_final(Date data_final) {
 		this.data_final = data_final;
+	}
+	
+	@JsonbTransient
+	public Set<Evento> getEventoPalestras() {
+		return eventoPalestras;
+	}
+
+	public void setEventoPalestras(Set<Evento> eventoPalestras) {
+		this.eventoPalestras = eventoPalestras;
 	}
 }

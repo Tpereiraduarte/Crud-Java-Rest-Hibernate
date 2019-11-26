@@ -26,23 +26,21 @@ public class PalestraController {
 	@Produces(MediaType.APPLICATION_JSON)	
 	@Path("/")
 	public List<Palestra> listPalestras() throws SQLException {
-		System.out.println("teste");
 		return palestraService.readAll();
 	}
 
-	/*@GET
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
-	@Path("{id}/")
-	public List<Pessoa> getPessoa(@PathParam("id") long id) throws SQLException {
-		return pessoaService.getPessoa(id);
-	}*/
+	@Path("/{id}")
+	public Palestra getPalestra(@PathParam("id") long id) throws SQLException {
+		return palestraService.getById(id);
+	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
 	public Response create(Palestra palestra) throws SQLException  {
-		System.out.println(palestra);
 		palestraService.create(palestra);
 		return Response.status(Response.Status.OK).build();
 	}

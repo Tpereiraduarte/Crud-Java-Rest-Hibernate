@@ -1,6 +1,12 @@
 package com.example.models;
 
-public class SalaSimples implements Sala{
+import com.example.decorator.SalaDecorator;
+
+public class SalaSimples extends SalaDecorator{
+
+	public SalaSimples(Sala sala) {
+		super(sala);
+	}
 
 	@Override
 	public double cadeira() {

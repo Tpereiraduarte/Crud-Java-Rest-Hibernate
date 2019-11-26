@@ -1,15 +1,17 @@
 package com.example.models;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.example.models.Evento;
-import com.example.decorator.SalaDecorator;
 
 @Entity
 @Table(name = "palestras")
@@ -20,6 +22,9 @@ public class Palestra {
 
 	@Column(name = "tema")
 	private String tema;
+	
+	@Column(name = "descricao")
+	private String descricao;
 
 	@Column(name = "data")
 	private Date data;
@@ -27,12 +32,26 @@ public class Palestra {
 	@Column(name = "palestrante")
 	private String palestrante;
 
-	/*
-	 * @JoinColumn(name = "id_sala", unique = true)
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL) private SalaDecorator sala;
-	 */
+	@ManyToOne
+	@JoinColumn(name="evento_id")
+	private Evento eventoPalestras;
 	
+	public Palestra() {
+		
+	}
+	
+	public Palestra(long id, String tema, String descricao, Date data, String palestrante,
+			Evento eventoPalestras) {
+		this.id = id;
+		this.tema = tema;
+		this.descricao = descricao;
+		this.data = data;
+		this.palestrante = palestrante;
+		this.eventoPalestras = eventoPalestras;
+	}
+
+
+
 	public long getId() {
 		return id;
 	}
@@ -49,6 +68,14 @@ public class Palestra {
 		this.tema = tema;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Date getData() {
 		return data;
 	}
@@ -63,5 +90,13 @@ public class Palestra {
 
 	public void setPalestrante(String palestrante) {
 		this.palestrante = palestrante;
+	}
+
+	public Evento getEventoPalestras() {
+		return eventoPalestras;
+	}
+
+	public void setEventoPalestras(Evento eventoPalestras) {
+		this.eventoPalestras = eventoPalestras;
 	}
 }

@@ -29,12 +29,12 @@ public class EventoController {
 		return eventoService.readAll();
 	}
 
-	/*@GET
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
-	@Path("{id}/")
-	public List<Pessoa> getPessoa(@PathParam("id") long id) throws SQLException {
-		return pessoaService.getPessoa(id);
-	}*/
+	@Path("/{id}")
+	public Evento getEvento(@PathParam("id") long id) throws SQLException {
+		return eventoService.getById(id);
+	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

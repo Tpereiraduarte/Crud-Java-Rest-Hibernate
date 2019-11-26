@@ -66,8 +66,10 @@ public class PalestraRepository implements IRepository<Palestra> {
 			Palestra novapalestra = getById(id);
 			em.getTransaction().begin();
 			novapalestra.setTema(palestra.getTema());
-			novapalestra.setData(palestra.getData());;
+			novapalestra.setDescricao(palestra.getDescricao());
+			novapalestra.setData(palestra.getData());
 			novapalestra.setPalestrante(palestra.getPalestrante());
+			novapalestra.setEventoPalestras(palestra.getEventoPalestras());
 			em.merge(novapalestra);
 			em.getTransaction().commit();
 			em.close();

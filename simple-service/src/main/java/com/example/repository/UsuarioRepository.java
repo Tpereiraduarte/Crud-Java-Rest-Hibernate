@@ -28,6 +28,19 @@ public class UsuarioRepository implements IRepository<Usuario> {
 		}
 	}
 
+	public Usuario listarUm(long id) {
+		try {
+			em.getTransaction().begin();
+			Usuario usuario = em.find(Usuario.class, id);
+			em.close();
+			System.out.println(usuario.toString());
+			return usuario;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public List<Usuario> readAll() {
 		List<Usuario> results = new ArrayList<Usuario>();

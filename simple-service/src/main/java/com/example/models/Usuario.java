@@ -1,7 +1,11 @@
 package com.example.models;
+import java.util.Set;
+
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -58,5 +62,4 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 }
