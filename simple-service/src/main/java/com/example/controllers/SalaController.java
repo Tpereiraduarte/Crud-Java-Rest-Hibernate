@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.example.decorator.SalaDecorator;
+import com.example.models.Sala;
 import com.example.repository.SalaRepository;
 
 @Path("salas")
@@ -25,32 +26,30 @@ public class SalaController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
 	@Path("/")
-	public List<SalaDecorator> listPalestras() throws SQLException {
+	public List<Sala> listSalas() throws SQLException {
 		return salaService.readAll();
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
 	@Path("/")
-	public SalaDecorator getSala(long id) throws SQLException {
+	public Sala getSala(long id) throws SQLException {
 		return salaService.getById(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{valor}")
-	public Response create(@PathParam("valor") long valor) throws SQLException  {
-		System.out.println(valor);
-		salaService.create(valor);
-		return Response.status(Response.Status.OK).build();
+	@Path("/")
+	public long create(int valor) throws SQLException  {
+		return salaService.create(valor);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)	
 	@Path("/{id}")
-	public Response update(@PathParam("id") long id, SalaDecorator sala) throws SQLException {
+	public Response update(@PathParam("id") long id, Sala sala) throws SQLException {
 		salaService.update(id, sala);
 		return Response.status(Response.Status.OK).build();
 	}

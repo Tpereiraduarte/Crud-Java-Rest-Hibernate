@@ -5,7 +5,7 @@ import java.util.List;
 public interface ISalaRepository<T> {
 	List<T>readAll();
 	T getById(long id);
-	void create(long valor);
+	long create(int valor);
 	void update(long id, T entity);
 	void remove(T entity);
 }

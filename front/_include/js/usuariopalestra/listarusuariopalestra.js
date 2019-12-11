@@ -5,18 +5,19 @@ $(document).ready(function () {
         contentType: "application/json",
         dataType: 'json',
         success: function (result) {
-            $('#lista-palestras').append(
-            "<h4>Usuario: " + result[0].usuario.nome +" "+result[1].usuario.sobrenome+"</h4>"
-                + "<p>Nome do Evento: " + result[0].palestra.eventoPalestras.nome + "</p>"
-            );
             result.forEach(function (currentValue) {
-                $('#lista-palestras').append("<p>Palestra: " + currentValue.palestra.tema + "</p>");
-            });
-
             $('#lista-palestras').append(
-                "<a href='javascript:removerUsuarioPalestra("+ result[0].id+")'>Remover </a>"
-                + "<a href='javascript:editarUsuarioPalestra("+ result[0].id+")'>Editar </a><hr/>"
+            "<h4>Usuario: " + currentValue.usuario.nome +"</h4>"
+                +"<p>Email: "+currentValue.usuario.email +"</p>"
+                + "<p>Nome do Evento: " + currentValue.palestra.eventoPalestras.nome + "</p>"
             );
+                $('#lista-palestras').append("<p>Palestra: " + currentValue.palestra.tema + "</p>");
+                
+                $('#lista-palestras').append(
+                    "<a href='javascript:removerUsuarioPalestra("+ result.id+")'>Remover </a>"
+                    + "<a href='javascript:editarUsuarioPalestra("+ result.id+")'>Editar </a><hr/>"
+                    );
+            });
         }
     });
 });
